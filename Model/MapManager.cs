@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 using static GardeningWithMines.Model.ControlsManager;
 using static GardeningWithMines.Properties.Settings;
@@ -71,53 +73,61 @@ namespace GardeningWithMines.Model
 
         public static void Click(int row, int column)
         {
-            BlockButtons[row, column].IsEnabled = false;
-            if (MineMap[row, column] == -1)
+            if(BlockButtons[row, column].Content == null)
             {
-                BlockButtons[row, column].FontFamily = new FontFamily(Default.IconFontFamily);
-                BlockButtons[row, column].Content = Default.MineCharacter;
-                BlockButtons[row, column].FontSize = Default.BlockFontSize * Default.IconSizeRatio;
-            }
-            else if (MineMap[row, column] == 0)
-            {
-                Queue<Position> buttons = new Queue<Position>();
-                HashSet<Position> isSet = new HashSet<Position>();
-                buttons.Enqueue(new Position(row, column));
-                Position tempPosition;
-                while (buttons.Count > 0)
+                BlockButtons[row, column].IsEnabled = false;
+                if (MineMap[row, column] == -1)
                 {
-                    tempPosition = buttons.Dequeue();
-
-                    for (int i = 0; i < 8; ++i)
+                    BlockButtons[row, column].FontFamily = new FontFamily(Default.IconFontFamily);
+                    BlockButtons[row, column].Content = Default.MineCharacter;
+                    BlockButtons[row, column].SetBinding(Button.FontSizeProperty, IconFontSizeBinding);
+                }
+                else if (MineMap[row, column] == 0)
+                {
+                    Queue<Position> buttons = new Queue<Position>();
+                    HashSet<Position> isSet = new HashSet<Position>();
+                    Position currentPosition = new Position(row, column);
+                    buttons.Enqueue(currentPosition);
+                    isSet.Add(currentPosition);
+                    Position tempPosition;
+                    while (buttons.Count > 0)
                     {
-                        Position nextPosition =
-                            new Position(tempPosition.Row + Around[i, 0],
-                            tempPosition.Column + Around[i, 1]);
-                        //nextRow = tempPosition.Row + Around[i, 0];
-                        //nextColumn = tempPosition.Row + Around[i, 1];
-                        if (IsInRange(nextPosition.Row, nextPosition.Column) &&
-                            (!isSet.Contains(nextPosition)) &&
-                            BlockButtons[nextPosition.Row, nextPosition.Column].Content == null)
+                        tempPosition = buttons.Dequeue();
+
+                        for (int i = 0; i < 8; ++i)
                         {
-                            isSet.Add(nextPosition);
-                            if (MineMap[nextPosition.Row, nextPosition.Column] > 0)
+                            Position nextPosition =
+                                new Position(tempPosition.Row + Around[i, 0],
+                                tempPosition.Column + Around[i, 1]);
+                            //nextRow = tempPosition.Row + Around[i, 0];
+                            //nextColumn = tempPosition.Row + Around[i, 1];
+                            if (IsInRange(nextPosition.Row, nextPosition.Column) &&
+                                (!isSet.Contains(nextPosition)) &&
+                                BlockButtons[nextPosition.Row, nextPosition.Column].Content == null)
                             {
-                                BlockButtons[nextPosition.Row, nextPosition.Column].Content =
-                                    MineMap[nextPosition.Row, nextPosition.Column].ToString();
-                                BlockButtons[nextPosition.Row, nextPosition.Column].IsEnabled = false;
-                            }
-                            if (MineMap[nextPosition.Row, nextPosition.Column] == 0)
-                            {
-                                BlockButtons[nextPosition.Row, nextPosition.Column].IsEnabled = false;
-                                buttons.Enqueue(nextPosition);
+                                isSet.Add(nextPosition);
+                                if (MineMap[nextPosition.Row, nextPosition.Column] > 0)
+                                {
+                                    //BlockButtons[nextPosition.Row, nextPosition.Column].SetBinding(Button.FontSizeProperty, BlockFontSizeBinding);
+                                    BlockButtons[nextPosition.Row, nextPosition.Column].Content =
+                                        MineMap[nextPosition.Row, nextPosition.Column].ToString();
+                                    BlockButtons[nextPosition.Row, nextPosition.Column].IsEnabled = false;
+                                }
+                                if (MineMap[nextPosition.Row, nextPosition.Column] == 0)
+                                {
+                                    BlockButtons[nextPosition.Row, nextPosition.Column].IsEnabled = false;
+                                    buttons.Enqueue(nextPosition);
+                                }
                             }
                         }
                     }
                 }
-            }
-            else
-            {
-                BlockButtons[row, column].Content = MineMap[row, column].ToString();
+                else
+                {
+                    //BlockButtons[row, column].FontFamily = new FontFamily(Default.BlockFontFamily);
+                    //BlockButtons[row, column].SetBinding(Button.FontSizeProperty, BlockFontSizeBinding);
+                    BlockButtons[row, column].Content = MineMap[row, column].ToString();
+                }
             }
         }
 

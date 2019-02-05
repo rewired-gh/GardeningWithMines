@@ -322,5 +322,17 @@ namespace GardeningWithMines.Properties {
                 this["MineCharacter"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double IconFontSize {
+            get {
+                return ((double)(this["IconFontSize"]));
+            }
+            set {
+                this["IconFontSize"] = value;
+            }
+        }
     }
 }

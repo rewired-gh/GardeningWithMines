@@ -60,13 +60,13 @@ namespace GardeningWithMines
                             {
                                 BlockButtons[ti, tj].FontFamily = new FontFamily(Default.IconFontFamily);
                                 BlockButtons[ti, tj].Content = Default.FlagCharacter;
-                                BlockButtons[ti, tj].FontSize = Default.BlockFontSize * Default.IconSizeRatio;
+                                BlockButtons[ti, tj].SetBinding(Button.FontSizeProperty, IconFontSizeBinding);
                             }
                             else
                             {
                                 BlockButtons[ti, tj].FontFamily = new FontFamily(Default.BlockFontFamily);
                                 BlockButtons[ti, tj].Content = null;
-                                BlockButtons[ti, tj].FontSize = Default.BlockFontSize;
+                                BlockButtons[ti, tj].SetBinding(Button.FontSizeProperty, BlockFontSizeBinding);
                             }
                         };
 
@@ -120,6 +120,7 @@ namespace GardeningWithMines
                 / Default.MapRow * Default.FontSizeRatio;
             Default.BlockFontSize = blockFontSize < Default.BlockMaxFontSize ?
                 blockFontSize : Default.BlockMaxFontSize;
+            Default.IconFontSize = Default.BlockFontSize * Default.IconSizeRatio;
         }
 
         private void Window_PreviewKeyUp(object sender, System.Windows.Input.KeyEventArgs e)
