@@ -1,0 +1,81 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GardeningWithMines.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="BlockBorderThickness" Type="System.Windows.Thickness" Scope="User">
+      <Value Profile="(Default)">1,1,1,1</Value>
+    </Setting>
+    <Setting Name="MapRow" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="MapColumn" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="BlockBorderBrush" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Gray</Value>
+    </Setting>
+    <Setting Name="BlockFontSize" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="BlockFontFamily" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Arial</Value>
+    </Setting>
+    <Setting Name="BlockMaxFontSize" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">256</Value>
+    </Setting>
+    <Setting Name="GlobalHeight" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">500</Value>
+    </Setting>
+    <Setting Name="GlobalWidth" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">500</Value>
+    </Setting>
+    <Setting Name="MapHeight" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">480</Value>
+    </Setting>
+    <Setting Name="MapWidth" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">480</Value>
+    </Setting>
+    <Setting Name="ForceCompleteView" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MaxViewMargin" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="MinBlockHeight" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">16</Value>
+    </Setting>
+    <Setting Name="MinBlockWidth" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">16</Value>
+    </Setting>
+    <Setting Name="DeltaHeight" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">48</Value>
+    </Setting>
+    <Setting Name="DeltaWidth" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">32</Value>
+    </Setting>
+    <Setting Name="FontSizeRatio" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.75</Value>
+    </Setting>
+    <Setting Name="IsSquareBlock" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ExtraMapBorderThickness" Type="System.Windows.Thickness" Scope="User">
+      <Value Profile="(Default)">2,2,2,2</Value>
+    </Setting>
+    <Setting Name="MinesCount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">40</Value>
+    </Setting>
+    <Setting Name="IconFontFamily" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Segoe UI Emoji</Value>
+    </Setting>
+    <Setting Name="FlagCharacter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">🚩</Value>
+    </Setting>
+    <Setting Name="IconSizeRatio" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.6</Value>
+    </Setting>
+    <Setting Name="MineCharacter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">💣</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GardeningWithMines", "GardeningWithMines.csproj", "{53A47633-B066-4205-8D1D-BE568A1DD9E4}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Gardening With Mines Setup", "..\Gardening With Mines Setup\Gardening With Mines Setup.vdproj", "{62B2D9CD-A9CC-4B9A-AD39-6973504245C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53A47633-B066-4205-8D1D-BE568A1DD9E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53A47633-B066-4205-8D1D-BE568A1DD9E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53A47633-B066-4205-8D1D-BE568A1DD9E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53A47633-B066-4205-8D1D-BE568A1DD9E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62B2D9CD-A9CC-4B9A-AD39-6973504245C3}.Debug|Any CPU.ActiveCfg = Debug
+		{62B2D9CD-A9CC-4B9A-AD39-6973504245C3}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {995466DD-2CF3-4867-BF72-18C56C84B60E}
+	EndGlobalSection
+EndGlobal
