@@ -8,9 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GardeningWithMines.Properties {
-    
-    
+namespace GardeningWithMines.Properties
+{
+
+
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
@@ -332,6 +333,18 @@ namespace GardeningWithMines.Properties {
             }
             set {
                 this["IconFontSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PLACEHOLDER {
+            get {
+                return ((string)(this["PLACEHOLDER"]));
+            }
+            set {
+                this["PLACEHOLDER"] = value;
             }
         }
     }

@@ -1,21 +1,17 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:GardeningWithMines"
-                    xmlns:properties="clr-namespace:GardeningWithMines.Properties">
-    <Style TargetType="{x:Type Button}"
-           x:Name="BlockButtonStyle"
-           x:Key="BlockButtonStyle">
-        <Setter Property="BorderThickness"
-                Value="{Binding Path=BlockBorderThickness, Source={x:Static properties:Settings.Default}}" />
-        <Setter Property="BorderBrush"
-                Value="{Binding Path=BlockBorderBrush, Source={x:Static properties:Settings.Default}}" />
-        <Setter Property="FontSize"
-                Value="{Binding Path=BlockFontSize, Source={x:Static properties:Settings.Default}}" />
-        <Setter Property="FontFamily"
-                Value="{Binding Path=BlockFontFamily, Source={x:Static properties:Settings.Default}}" />
-        <Setter Property="HorizontalContentAlignment"
-                Value="Center" />
-        <Setter Property="VerticalContentAlignment"
-                Value="Center" />
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:GardeningWithMines"
+    xmlns:properties="clr-namespace:GardeningWithMines.Properties">
+    <Style
+        x:Key="BlockButtonStyle"
+        x:Name="BlockButtonStyle"
+        TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="{Binding Path=BlockBorderThickness, Source={x:Static properties:Settings.Default}}" />
+        <Setter Property="BorderBrush" Value="{Binding Path=BlockBorderBrush, Source={x:Static properties:Settings.Default}}" />
+        <Setter Property="FontSize" Value="{Binding Path=BlockFontSize, Source={x:Static properties:Settings.Default}}" />
+        <Setter Property="FontFamily" Value="{Binding Path=BlockFontFamily, Source={x:Static properties:Settings.Default}}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 </ResourceDictionary>

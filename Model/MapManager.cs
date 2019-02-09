@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Media;
 using static GardeningWithMines.Model.ControlsManager;
 using static GardeningWithMines.Properties.Settings;
@@ -11,6 +10,7 @@ namespace GardeningWithMines.Model
     public struct Position
     {
         public int Row, Column;
+
         public Position(int row, int column)
         {
             Row = row;
@@ -20,6 +20,10 @@ namespace GardeningWithMines.Model
 
     public static class MapManager
     {
+        private readonly static int[,] Around = { { -1, -1 }, { -1, 0 }, { -1,  1 },
+                                                  {  0, -1 },            {  0,  1 },
+                                                  {  1, -1 }, {  1, 0 }, {  1,  1 } };
+
         static MapManager()
         {
             Random random = new Random();
@@ -46,34 +50,9 @@ namespace GardeningWithMines.Model
 
         public static int[,] MineMap { get; set; }
 
-        private readonly static int[,] Around = { { -1, -1 }, { -1, 0 }, { -1,  1 },
-                                                  {  0, -1 },            {  0,  1 },
-                                                  {  1, -1 }, {  1, 0 }, {  1,  1 } };
-
-        private static bool IsInRange(int row, int column)
-        {
-            return row >= 0 && column >= 0 && row < Default.MapRow && column < Default.MapColumn;
-        }
-
-        private static void SetMine(int row, int column)
-        {
-            MineMap[row, column] = -1;
-            int tempRow, tempColumn;
-
-            for (int i = 0; i < 8; ++i)
-            {
-                tempRow = row + Around[i, 0];
-                tempColumn = column + Around[i, 1];
-                if (IsInRange(tempRow, tempColumn) && MineMap[tempRow, tempColumn] != -1)
-                {
-                    MineMap[tempRow, tempColumn]++;
-                }
-            }
-        }
-
         public static void Click(int row, int column)
         {
-            if(BlockButtons[row, column].Content == null)
+            if (BlockButtons[row, column].Content == null)
             {
                 BlockButtons[row, column].IsEnabled = false;
                 if (MineMap[row, column] == -1)
@@ -133,6 +112,27 @@ namespace GardeningWithMines.Model
 
         public static void Trigger()
         {
+        }
+
+        private static bool IsInRange(int row, int column)
+        {
+            return row >= 0 && column >= 0 && row < Default.MapRow && column < Default.MapColumn;
+        }
+
+        private static void SetMine(int row, int column)
+        {
+            MineMap[row, column] = -1;
+            int tempRow, tempColumn;
+
+            for (int i = 0; i < 8; ++i)
+            {
+                tempRow = row + Around[i, 0];
+                tempColumn = column + Around[i, 1];
+                if (IsInRange(tempRow, tempColumn) && MineMap[tempRow, tempColumn] != -1)
+                {
+                    MineMap[tempRow, tempColumn]++;
+                }
+            }
         }
     }
 }
