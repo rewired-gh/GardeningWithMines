@@ -11,9 +11,6 @@
     <Setting Name="MapColumn" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
-    <Setting Name="BlockForegroundBrush" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Red</Value>
-    </Setting>
     <Setting Name="BlockFontSize" Type="System.Double" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
@@ -82,6 +79,9 @@
     </Setting>
     <Setting Name="BlockBackgroundBrush" Type="System.String" Scope="User">
       <Value Profile="(Default)">LightBlue</Value>
+    </Setting>
+    <Setting Name="BlockForegroundBrush" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Black</Value>
     </Setting>
   </Settings>
 </SettingsFile>

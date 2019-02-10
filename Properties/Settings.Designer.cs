@@ -61,18 +61,6 @@ namespace GardeningWithMines.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
-        public string BlockForegroundBrush {
-            get {
-                return ((string)(this["BlockForegroundBrush"]));
-            }
-            set {
-                this["BlockForegroundBrush"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("100")]
         public double BlockFontSize {
             get {
@@ -344,6 +332,18 @@ namespace GardeningWithMines.Properties {
             }
             set {
                 this["BlockBackgroundBrush"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public string BlockForegroundBrush {
+            get {
+                return ((string)(this["BlockForegroundBrush"]));
+            }
+            set {
+                this["BlockForegroundBrush"] = value;
             }
         }
     }
