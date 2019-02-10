@@ -11,8 +11,8 @@
     <Setting Name="MapColumn" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
-    <Setting Name="BlockBorderBrush" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Gray</Value>
+    <Setting Name="BlockForegroundBrush" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Red</Value>
     </Setting>
     <Setting Name="BlockFontSize" Type="System.Double" Scope="User">
       <Value Profile="(Default)">100</Value>
@@ -63,7 +63,7 @@
       <Value Profile="(Default)">2,2,2,2</Value>
     </Setting>
     <Setting Name="MinesCount" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">40</Value>
+      <Value Profile="(Default)">30</Value>
     </Setting>
     <Setting Name="IconFontFamily" Type="System.String" Scope="User">
       <Value Profile="(Default)">Segoe UI Emoji</Value>
@@ -80,8 +80,8 @@
     <Setting Name="IconFontSize" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="PLACEHOLDER" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="BlockBackgroundBrush" Type="System.String" Scope="User">
+      <Value Profile="(Default)">LightBlue</Value>
     </Setting>
   </Settings>
 </SettingsFile>

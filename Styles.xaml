@@ -8,7 +8,8 @@
         x:Name="BlockButtonStyle"
         TargetType="{x:Type Button}">
         <Setter Property="BorderThickness" Value="{Binding Path=BlockBorderThickness, Source={x:Static properties:Settings.Default}}" />
-        <Setter Property="BorderBrush" Value="{Binding Path=BlockBorderBrush, Source={x:Static properties:Settings.Default}}" />
+        <Setter Property="Foreground" Value="{Binding Path=BlockForegroundBrush, Source={x:Static properties:Settings.Default}}" />
+        <Setter Property="Background" Value="{Binding Path=BlockBackgroundBrush, Source={x:Static properties:Settings.Default}}" />
         <Setter Property="FontSize" Value="{Binding Path=BlockFontSize, Source={x:Static properties:Settings.Default}}" />
         <Setter Property="FontFamily" Value="{Binding Path=BlockFontFamily, Source={x:Static properties:Settings.Default}}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />

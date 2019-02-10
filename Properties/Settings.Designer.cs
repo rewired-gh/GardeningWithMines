@@ -8,10 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GardeningWithMines.Properties
-{
-
-
+namespace GardeningWithMines.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
@@ -62,13 +61,13 @@ namespace GardeningWithMines.Properties
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Gray")]
-        public string BlockBorderBrush {
+        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
+        public string BlockForegroundBrush {
             get {
-                return ((string)(this["BlockBorderBrush"]));
+                return ((string)(this["BlockForegroundBrush"]));
             }
             set {
-                this["BlockBorderBrush"] = value;
+                this["BlockForegroundBrush"] = value;
             }
         }
         
@@ -266,7 +265,7 @@ namespace GardeningWithMines.Properties
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("40")]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
         public int MinesCount {
             get {
                 return ((int)(this["MinesCount"]));
@@ -338,13 +337,13 @@ namespace GardeningWithMines.Properties
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string PLACEHOLDER {
+        [global::System.Configuration.DefaultSettingValueAttribute("LightBlue")]
+        public string BlockBackgroundBrush {
             get {
-                return ((string)(this["PLACEHOLDER"]));
+                return ((string)(this["BlockBackgroundBrush"]));
             }
             set {
-                this["PLACEHOLDER"] = value;
+                this["BlockBackgroundBrush"] = value;
             }
         }
     }

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Media;
-using static GardeningWithMines.Model.ControlsManager;
+using static GardeningWithMines.Managers.ControlsManager;
 using static GardeningWithMines.Properties.Settings;
 
-namespace GardeningWithMines.Model
+namespace GardeningWithMines.Managers
 {
     public struct Position
     {
@@ -37,13 +37,10 @@ namespace GardeningWithMines.Model
                     positions.Add(new Position(i, j));
                 }
             }
-            //List<Position> minePositions = new List<Position>();
             for (int i = 0; i < Default.MinesCount; i++)
             {
                 int currentIndex = random.Next(positions.Count - 1);
                 SetMine(positions[currentIndex].Row, positions[currentIndex].Column);
-                //MineMap[positions[currentIndex].Row, positions[currentIndex].Column] = -1;
-                //minePositions.Add(positions[currentIndex]);
                 positions.RemoveAt(currentIndex);
             }
         }
@@ -63,55 +60,51 @@ namespace GardeningWithMines.Model
                 }
                 else if (MineMap[row, column] == 0)
                 {
-                    Queue<Position> buttons = new Queue<Position>();
-                    HashSet<Position> isSet = new HashSet<Position>();
-                    Position currentPosition = new Position(row, column);
-                    buttons.Enqueue(currentPosition);
-                    isSet.Add(currentPosition);
-                    Position tempPosition;
-                    while (buttons.Count > 0)
-                    {
-                        tempPosition = buttons.Dequeue();
-
-                        for (int i = 0; i < 8; ++i)
-                        {
-                            Position nextPosition =
-                                new Position(tempPosition.Row + Around[i, 0],
-                                tempPosition.Column + Around[i, 1]);
-                            //nextRow = tempPosition.Row + Around[i, 0];
-                            //nextColumn = tempPosition.Row + Around[i, 1];
-                            if (IsInRange(nextPosition.Row, nextPosition.Column) &&
-                                (!isSet.Contains(nextPosition)) &&
-                                BlockButtons[nextPosition.Row, nextPosition.Column].Content == null)
-                            {
-                                isSet.Add(nextPosition);
-                                if (MineMap[nextPosition.Row, nextPosition.Column] > 0)
-                                {
-                                    //BlockButtons[nextPosition.Row, nextPosition.Column].SetBinding(Button.FontSizeProperty, BlockFontSizeBinding);
-                                    BlockButtons[nextPosition.Row, nextPosition.Column].Content =
-                                        MineMap[nextPosition.Row, nextPosition.Column].ToString();
-                                    BlockButtons[nextPosition.Row, nextPosition.Column].IsEnabled = false;
-                                }
-                                if (MineMap[nextPosition.Row, nextPosition.Column] == 0)
-                                {
-                                    BlockButtons[nextPosition.Row, nextPosition.Column].IsEnabled = false;
-                                    buttons.Enqueue(nextPosition);
-                                }
-                            }
-                        }
-                    }
+                    BFS_Algorithm(row, column);
                 }
                 else
                 {
-                    //BlockButtons[row, column].FontFamily = new FontFamily(Default.BlockFontFamily);
-                    //BlockButtons[row, column].SetBinding(Button.FontSizeProperty, BlockFontSizeBinding);
                     BlockButtons[row, column].Content = MineMap[row, column].ToString();
                 }
             }
         }
 
-        public static void Trigger()
+        private static void BFS_Algorithm(int row, int column)
         {
+            Queue<Position> buttons = new Queue<Position>();
+            HashSet<Position> isSet = new HashSet<Position>();
+            Position currentPosition = new Position(row, column);
+            buttons.Enqueue(currentPosition);
+            isSet.Add(currentPosition);
+            Position tempPosition;
+            while (buttons.Count > 0)
+            {
+                tempPosition = buttons.Dequeue();
+
+                for (int i = 0; i < 8; ++i)
+                {
+                    Position nextPosition =
+                        new Position(tempPosition.Row + Around[i, 0],
+                        tempPosition.Column + Around[i, 1]);
+                    if (IsInRange(nextPosition.Row, nextPosition.Column) &&
+                        (!isSet.Contains(nextPosition)) &&
+                        BlockButtons[nextPosition.Row, nextPosition.Column].Content == null)
+                    {
+                        isSet.Add(nextPosition);
+                        if (MineMap[nextPosition.Row, nextPosition.Column] > 0)
+                        {
+                            BlockButtons[nextPosition.Row, nextPosition.Column].Content =
+                                MineMap[nextPosition.Row, nextPosition.Column].ToString();
+                            BlockButtons[nextPosition.Row, nextPosition.Column].IsEnabled = false;
+                        }
+                        if (MineMap[nextPosition.Row, nextPosition.Column] == 0)
+                        {
+                            BlockButtons[nextPosition.Row, nextPosition.Column].IsEnabled = false;
+                            buttons.Enqueue(nextPosition);
+                        }
+                    }
+                }
+            }
         }
 
         private static bool IsInRange(int row, int column)

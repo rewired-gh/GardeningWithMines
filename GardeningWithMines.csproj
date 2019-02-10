@@ -96,6 +96,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\IntelliButton.cs" />
     <Compile Include="SimpleConfigWindow.xaml.cs">
       <DependentUpon>SimpleConfigWindow.xaml</DependentUpon>
     </Compile>
@@ -127,8 +128,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\ControlsManager.cs" />
-    <Compile Include="Model\MapManager.cs" />
+    <Compile Include="Managers\ControlsManager.cs" />
+    <Compile Include="Managers\MapManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

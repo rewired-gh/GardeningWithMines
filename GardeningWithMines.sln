@@ -8,6 +8,9 @@ EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Gardening With Mines Setup", "..\Gardening With Mines Setup\Gardening With Mines Setup.vdproj", "{62B2D9CD-A9CC-4B9A-AD39-6973504245C3}"
 EndProject
 Global
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

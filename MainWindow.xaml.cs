@@ -1,9 +1,8 @@
-﻿using GardeningWithMines.Model;
+﻿using GardeningWithMines.Models;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using static GardeningWithMines.Model.ControlsManager;
+using static GardeningWithMines.Managers.ControlsManager;
 using static GardeningWithMines.Properties.Settings;
 
 namespace GardeningWithMines
@@ -33,63 +32,42 @@ namespace GardeningWithMines
             {
                 MapGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
-            //List<Button> buttons = new List<Button>();
 
             for (int i = 0; i < Default.MapRow; i++)
             {
                 for (int j = 0; j < Default.MapColumn; j++)
                 {
-                    /*buttons.Add(new Button()
-                    {
-                        Style = Application.Current.Resources["BlockButtonStyle"] as Style,
-                        Content = "8"
-                    });*/
-
-                    BlockButtons[i, j] = new Button()
-                    {
-                        Style = Application.Current.Resources["BlockButtonStyle"] as Style,
-                        //Content = MapManager.MineMap[i, j].ToString(),
-                        Padding = new Thickness(0)
-                    };
-                    int ti = i, tj = j;
-                    BlockButtons[i, j].PreviewMouseLeftButtonDown += (s, e) =>
-                        { MapManager.Click(ti, tj); };
-                    BlockButtons[i, j].PreviewMouseRightButtonUp += (s, e) =>
-                        {
-                            if (BlockButtons[ti, tj].Content == null)
-                            {
-                                BlockButtons[ti, tj].FontFamily = new FontFamily(Default.IconFontFamily);
-                                BlockButtons[ti, tj].Content = Default.FlagCharacter;
-                                BlockButtons[ti, tj].SetBinding(Button.FontSizeProperty, IconFontSizeBinding);
-                            }
-                            else
-                            {
-                                BlockButtons[ti, tj].FontFamily = new FontFamily(Default.BlockFontFamily);
-                                BlockButtons[ti, tj].Content = null;
-                                BlockButtons[ti, tj].SetBinding(Button.FontSizeProperty, BlockFontSizeBinding);
-                            }
-                        };
-
-                    MapGrid.Children.Add(BlockButtons[i, j]);
-                    Grid.SetRow(BlockButtons[i, j], i);
-                    Grid.SetColumn(BlockButtons[i, j], j);
+                    SetBlock(i, j);
                 }
             }
         }
 
         private void RecalculateBlockFontSize()
         {
-            double blockFontSize = (Default.MapHeight < MapGrid.MinHeight ? MapGrid.MinHeight : Default.MapHeight)
-                / Default.MapRow * Default.FontSizeRatio;
+            double blockFontSize = (Default.MapHeight < MapGrid.MinHeight ?
+                MapGrid.MinHeight : Default.MapHeight) / Default.MapRow * Default.FontSizeRatio;
             Default.BlockFontSize = blockFontSize < Default.BlockMaxFontSize ?
                 blockFontSize : Default.BlockMaxFontSize;
             Default.IconFontSize = Default.BlockFontSize * Default.IconSizeRatio;
         }
 
+        private void SetBlock(int i, int j)
+        {
+            BlockButtons[i, j] = new IntelliButton(i, j)
+            {
+                Style = Application.Current.Resources["BlockButtonStyle"] as Style,
+                Padding = new Thickness(0)
+            };
+            BlockButtons[i, j].PreviewMouseLeftButtonUp += PreviewMouseLeftButtonUpAction;
+            BlockButtons[i, j].PreviewMouseRightButtonUp += PreviewMouseRightButtonUpAction;
+
+            MapGrid.Children.Add(BlockButtons[i, j]);
+            Grid.SetRow(BlockButtons[i, j], i);
+            Grid.SetColumn(BlockButtons[i, j], j);
+        }
+
         private void UpdateWindow(double delta = 0)
         {
-            // double deltaHeight = 48;
-            // double deltaWidth = 28;
             double tempHeight = ActualHeight - Default.DeltaHeight - delta;
             double tempWidth = tempHeight / Default.MapRow * Default.MapColumn;
             if (Default.ForceCompleteView)
@@ -111,7 +89,7 @@ namespace GardeningWithMines
             RecalculateBlockFontSize();
         }
 
-        private void Window_PreviewKeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        private void Window_PreviewKeyUp(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
@@ -129,10 +107,6 @@ namespace GardeningWithMines
                     SimpleConfigWindow configWindow = new SimpleConfigWindow();
                     configWindow.Show();
                     break;
-                    /*case Key.H:
-                        HelpWindow helpDialog = new HelpWindow();
-                        helpDialog.Show();
-                        break;*/
             }
         }
 
