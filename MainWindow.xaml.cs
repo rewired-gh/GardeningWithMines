@@ -100,12 +100,12 @@ namespace GardeningWithMines
 
                 case Key.A:
                     AboutBox1 aboutDialog = new AboutBox1();
-                    aboutDialog.Show();
+                    aboutDialog.ShowDialog();
                     break;
 
                 case Key.F12:
                     SimpleConfigWindow configWindow = new SimpleConfigWindow();
-                    configWindow.Show();
+                    configWindow.ShowDialog();
                     break;
             }
         }

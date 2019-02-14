@@ -80,6 +80,18 @@
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
             IsEnabled="False" />
+        <TextBlock
+            Grid.Row="4"
+            Grid.ColumnSpan="2"
+            Width="200"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="9"
+            FontStretch="UltraExpanded"
+            FontStyle="Italic"
+            Foreground="Red"
+            Text="If this game was installed from Microsoft Store, you need to manually restart the game after application."
+            TextWrapping="WrapWithOverflow" />
         <Button
             Name="ApplyButton"
             Grid.Row="4"

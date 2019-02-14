@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using static GardeningWithMines.Properties.Settings;
 
@@ -10,6 +11,7 @@ namespace GardeningWithMines
     public partial class SimpleConfigWindow : Window
     {
         private int currentRow = -1, currentColumn = -1, currentCount = -1;
+        private int lastLength = 0;
 
         public SimpleConfigWindow()
         {
@@ -22,6 +24,10 @@ namespace GardeningWithMines
             Default.MapColumn = currentColumn;
             Default.MinesCount = currentCount;
             Default.Save();
+            string info = $"[Saved at {DateTime.Now.ToLongTimeString()}] ";
+            lastLength = info.Length;
+            Title = info +
+                (Title.Contains("[") ? Title.Remove(0, lastLength) : Title);
             System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
             Application.Current.Shutdown();
         }
