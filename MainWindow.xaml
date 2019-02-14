@@ -16,11 +16,9 @@
     mc:Ignorable="d">
     <ScrollViewer
         Padding="5"
-        HorizontalAlignment="Stretch"
-        VerticalAlignment="Stretch"
         CanContentScroll="True"
         HorizontalScrollBarVisibility="Auto"
-        VerticalScrollBarVisibility="Auto">
+        VerticalScrollBarVisibility="Auto" >
         <Border
             Width="{Binding Path=MapWidth, Source={x:Static properties:Settings.Default}, Mode=OneWay}"
             Height="{Binding Path=MapHeight, Source={x:Static properties:Settings.Default}, Mode=OneWay}"
@@ -40,14 +38,6 @@
                 Height="{Binding Path=MapHeight, Source={x:Static properties:Settings.Default}, Mode=OneWay}"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
-                <!-- <Grid.RowDefinitions>
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Button Style="{StaticResource BlockButtonStyle}"
-                Content="8" />-->
             </Grid>
         </Border>
     </ScrollViewer>

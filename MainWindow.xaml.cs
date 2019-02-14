@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using MaterialDesignThemes.Wpf;
 using static GardeningWithMines.Managers.ControlsManager;
 using static GardeningWithMines.Properties.Settings;
 
