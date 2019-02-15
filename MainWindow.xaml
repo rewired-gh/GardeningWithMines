@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:GardeningWithMines"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:properties="clr-namespace:GardeningWithMines.Properties"
-    Title="Gardening With Mines (GUI)"
+    Title="Gardening With Mines"
     Width="{Binding Path=GlobalWidth, Source={x:Static properties:Settings.Default}, Mode=TwoWay}"
     Height="{Binding Path=GlobalHeight, Source={x:Static properties:Settings.Default}, Mode=TwoWay}"
     MinWidth="1"

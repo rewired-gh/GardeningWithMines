@@ -11,11 +11,17 @@ namespace GardeningWithMines
     public partial class SimpleConfigWindow : Window
     {
         private int currentRow = -1, currentColumn = -1, currentCount = -1;
-        private int lastLength = 0;
+        private string title = "Simple Config Window";
+        private int count;
+
+        private int GetCount => ++count < 10 ? count : (count = 0);
+
+        private int SetCount(int value) => count = value;
 
         public SimpleConfigWindow()
         {
             InitializeComponent();
+            SetCount(-1);
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -24,10 +30,8 @@ namespace GardeningWithMines
             Default.MapColumn = currentColumn;
             Default.MinesCount = currentCount;
             Default.Save();
-            string info = $"[Saved at {DateTime.Now.ToLongTimeString()}] ";
-            lastLength = info.Length;
-            Title = info +
-                (Title.Contains("[") ? Title.Remove(0, lastLength) : Title);
+            string info = $"[SavedToken: {GetCount}] ";
+            Title = info + title;
             System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
             Application.Current.Shutdown();
         }

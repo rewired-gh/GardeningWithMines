@@ -90,11 +90,10 @@
             Width="200"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
-            FontSize="9"
-            FontStretch="UltraExpanded"
+            FontSize="10"
             FontStyle="Italic"
             Foreground="Red"
-            Text="If this game was installed from Microsoft Store, you need to manually restart the game after application."
+            Text="Please restart the game manually to activate changes, thanks for understanding. "
             TextWrapping="WrapWithOverflow" />
         <materialDesign:TransitioningContent
             Grid.Row="4"
