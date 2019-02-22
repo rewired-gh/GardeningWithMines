@@ -11,6 +11,7 @@
     Height="200"
     Background="{DynamicResource MaterialDesignPaper}"
     FontFamily="{DynamicResource MaterialDesignFont}"
+    ResizeMode="NoResize"
     TextElement.FontSize="13"
     TextElement.FontWeight="Regular"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -18,7 +19,7 @@
     TextOptions.TextRenderingMode="Auto"
     WindowStartupLocation="CenterScreen"
     WindowStyle="ThreeDBorderWindow"
-    mc:Ignorable="d" ResizeMode="NoResize">
+    mc:Ignorable="d">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -95,9 +96,7 @@
             Foreground="Red"
             Text="Please restart the game manually to activate changes, thanks for understanding. "
             TextWrapping="WrapWithOverflow" />
-        <materialDesign:TransitioningContent
-            Grid.Row="4"
-            Grid.Column="1">
+        <materialDesign:TransitioningContent Grid.Row="4" Grid.Column="1">
             <materialDesign:TransitioningContent.OpeningEffects>
                 <materialDesign:TransitionEffect Kind="FadeIn" />
                 <materialDesign:TransitionEffect Kind="SlideInFromRight" />
@@ -111,8 +110,8 @@
                 Click="ApplyButton_Click"
                 Content="{materialDesign:PackIcon Tick}"
                 Cursor="Hand"
-                IsEnabled="False"
                 Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                IsEnabled="False"
                 Style="{DynamicResource MaterialDesignFloatingActionLightButton}" />
         </materialDesign:TransitioningContent>
     </Grid>

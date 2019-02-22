@@ -1,5 +1,4 @@
 ﻿using System.Windows.Controls;
-using MaterialDesignThemes.Wpf;
 
 namespace GardeningWithMines.Models
 {

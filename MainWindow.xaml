@@ -18,7 +18,7 @@
         Padding="5"
         CanContentScroll="True"
         HorizontalScrollBarVisibility="Auto"
-        VerticalScrollBarVisibility="Auto" >
+        VerticalScrollBarVisibility="Auto">
         <Border
             Width="{Binding Path=MapWidth, Source={x:Static properties:Settings.Default}, Mode=OneWay}"
             Height="{Binding Path=MapHeight, Source={x:Static properties:Settings.Default}, Mode=OneWay}"
@@ -37,8 +37,7 @@
                 Width="{Binding Path=MapWidth, Source={x:Static properties:Settings.Default}, Mode=OneWay}"
                 Height="{Binding Path=MapHeight, Source={x:Static properties:Settings.Default}, Mode=OneWay}"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Center">
-            </Grid>
+                VerticalAlignment="Center" />
         </Border>
     </ScrollViewer>
 </Window>

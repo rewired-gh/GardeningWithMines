@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using static GardeningWithMines.Properties.Settings;
 
@@ -10,19 +9,17 @@ namespace GardeningWithMines
     /// </summary>
     public partial class SimpleConfigWindow : Window
     {
+        private int count;
         private int currentRow = -1, currentColumn = -1, currentCount = -1;
         private string title = "Simple Config Window";
-        private int count;
-
-        private int GetCount => ++count < 10 ? count : (count = 0);
-
-        private int SetCount(int value) => count = value;
 
         public SimpleConfigWindow()
         {
             InitializeComponent();
             SetCount(-1);
         }
+
+        private int GetCount => ++count < 10 ? count : (count = 0);
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
@@ -92,5 +89,7 @@ namespace GardeningWithMines
                 ApplyButton.IsEnabled = false;
             }
         }
+
+        private int SetCount(int value) => count = value;
     }
 }

@@ -47,7 +47,7 @@ namespace GardeningWithMines.Managers
 
         public static int[,] MineMap { get; set; }
 
-        public static void Click(int row, int column)
+        public static bool Click(int row, int column)
         {
             if (BlockButtons[row, column].Content == null)
             {
@@ -57,6 +57,7 @@ namespace GardeningWithMines.Managers
                     BlockButtons[row, column].FontFamily = new FontFamily(Default.IconFontFamily);
                     BlockButtons[row, column].Content = Default.MineCharacter;
                     BlockButtons[row, column].SetBinding(Button.FontSizeProperty, IconFontSizeBinding);
+                    return true;
                 }
                 else if (MineMap[row, column] == 0)
                 {
@@ -67,6 +68,7 @@ namespace GardeningWithMines.Managers
                     BlockButtons[row, column].Content = MineMap[row, column].ToString();
                 }
             }
+            return false;
         }
 
         private static void BFS_Algorithm(int row, int column)
