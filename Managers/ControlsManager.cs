@@ -1,5 +1,4 @@
 ﻿using GardeningWithMines.Models;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -40,6 +39,8 @@ namespace GardeningWithMines.Managers
             }
         };
 
+        private static bool haveShownNotification = false;
+
         static ControlsManager()
         {
             BlockButtons = new Button[Default.MapRow, Default.MapColumn];
@@ -53,8 +54,9 @@ namespace GardeningWithMines.Managers
 
         private static void ShowNotificationOrNot()
         {
-            if (MapManager.unclickedSafeBlockCount == 0)
+            if ((!haveShownNotification) && MapManager.unclickedSafeBlockCount == 0)
             {
+                haveShownNotification = true;
                 string contentText;
                 if (MapManager.steppedCount == 0)
                 {
