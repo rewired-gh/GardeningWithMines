@@ -85,7 +85,7 @@
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
             IsEnabled="False" />
-        <TextBlock
+        <!--<TextBlock
             Grid.Row="4"
             Grid.ColumnSpan="2"
             Width="200"
@@ -95,7 +95,7 @@
             FontStyle="Italic"
             Foreground="Red"
             Text="Please restart the game manually to activate changes, thanks for understanding. "
-            TextWrapping="WrapWithOverflow" />
+            TextWrapping="WrapWithOverflow" />-->
         <materialDesign:TransitioningContent Grid.Row="4" Grid.Column="1">
             <materialDesign:TransitioningContent.OpeningEffects>
                 <materialDesign:TransitionEffect Kind="FadeIn" />

@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using static GardeningWithMines.Managers.ControlsManager;
+using static GardeningWithMines.Managers.GameDataManager;
 using static GardeningWithMines.Properties.Settings;
 
 namespace GardeningWithMines
@@ -16,36 +17,49 @@ namespace GardeningWithMines
         {
             InitializeComponent();
             Default.Save();
-            MyInit();
         }
 
-        private void MyInit()
+        public void Clear()
         {
-            MapGrid.MinHeight = Default.MinBlockHeight * Default.MapRow;
-            MapGrid.MinWidth = Default.MinBlockWidth * Default.MapColumn;
+            MapGrid.Children.Clear();
+            MapGrid.RowDefinitions.Clear();
+            MapGrid.ColumnDefinitions.Clear();
+        }
 
-            for (int i = 0; i < Default.MapRow; i++)
+        public void Init()
+        {
+            BlockButtons = new IntelliButton[CurrentGameData.MapRow, CurrentGameData.MapColumn];
+            MapGrid.MinHeight = Default.MinBlockHeight * CurrentGameData.MapRow;
+            MapGrid.MinWidth = Default.MinBlockWidth * CurrentGameData.MapColumn;
+
+            for (int i = 0; i < CurrentGameData.MapRow; i++)
             {
                 MapGrid.RowDefinitions.Add(new RowDefinition());
             }
-            for (int i = 0; i < Default.MapColumn; i++)
+            for (int i = 0; i < CurrentGameData.MapColumn; i++)
             {
                 MapGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-            for (int i = 0; i < Default.MapRow; i++)
+            for (int i = 0; i < CurrentGameData.MapRow; i++)
             {
-                for (int j = 0; j < Default.MapColumn; j++)
+                for (int j = 0; j < CurrentGameData.MapColumn; j++)
                 {
                     SetBlock(i, j);
                 }
             }
+            UpdateWindow();
+        }
+
+        private void MapGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            Init();
         }
 
         private void RecalculateBlockFontSize()
         {
             double blockFontSize = (Default.MapHeight < MapGrid.MinHeight ?
-                MapGrid.MinHeight : Default.MapHeight) / Default.MapRow * Default.FontSizeRatio;
+                MapGrid.MinHeight : Default.MapHeight) / CurrentGameData.MapRow * Default.FontSizeRatio;
             Default.BlockFontSize = blockFontSize < Default.BlockMaxFontSize ?
                 blockFontSize : Default.BlockMaxFontSize;
             Default.IconFontSize = Default.BlockFontSize * Default.IconSizeRatio;
@@ -66,10 +80,11 @@ namespace GardeningWithMines
             Grid.SetColumn(BlockButtons[i, j], j);
         }
 
-        private void UpdateWindow(double delta = 0)
+        private void UpdateWindow()
         {
+            double delta = WindowState == WindowState.Maximized ? Default.MaxViewMargin : 0;
             double tempHeight = ActualHeight - Default.DeltaHeight - delta;
-            double tempWidth = tempHeight / Default.MapRow * Default.MapColumn;
+            double tempWidth = tempHeight / CurrentGameData.MapRow * CurrentGameData.MapColumn;
             if (Default.ForceCompleteView)
             {
                 if (Width < tempWidth)
@@ -94,8 +109,7 @@ namespace GardeningWithMines
             switch (e.Key)
             {
                 case Key.F5:
-                    System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-                    Application.Current.Shutdown();
+                    GameRefresh();
                     break;
 
                 case Key.A:
@@ -112,14 +126,7 @@ namespace GardeningWithMines
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (WindowState == WindowState.Maximized)
-            {
-                UpdateWindow(Default.MaxViewMargin);
-            }
-            else
-            {
-                UpdateWindow();
-            }
+            UpdateWindow();
         }
     }
 }

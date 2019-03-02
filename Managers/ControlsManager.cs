@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
+using static GardeningWithMines.Managers.GameDataManager;
 using static GardeningWithMines.Properties.Settings;
 
 namespace GardeningWithMines.Managers
@@ -39,32 +40,29 @@ namespace GardeningWithMines.Managers
             }
         };
 
-        private static bool haveShownNotification = false;
-
         static ControlsManager()
         {
-            BlockButtons = new Button[Default.MapRow, Default.MapColumn];
             BlockFontSizeBinding.Source = Default;
             BlockFontSizeBinding.Path = new PropertyPath("BlockFontSize");
             IconFontSizeBinding.Source = Default;
             IconFontSizeBinding.Path = new PropertyPath("IconFontSize");
         }
 
-        public static Button[,] BlockButtons { get; set; }
+        public static IntelliButton[,] BlockButtons { get; set; }
 
         private static void ShowNotificationOrNot()
         {
-            if ((!haveShownNotification) && MapManager.unclickedSafeBlockCount == 0)
+            if ((!CurrentGameData.HaveShownNotification) && CurrentGameData.UnclickedSafeBlockCount == 0)
             {
-                haveShownNotification = true;
+                CurrentGameData.HaveShownNotification = true;
                 string contentText;
-                if (MapManager.steppedCount == 0)
+                if (CurrentGameData.SteppedCount == 0)
                 {
-                    contentText = $"Congratulations!\nYou have found all {MapManager.minesCount} mines without stepping on any of them.";
+                    contentText = $"Congratulations!\nYou have found all {CurrentGameData.MinesCount} mines without stepping on any of them.";
                 }
                 else
                 {
-                    contentText = $"Don't worry, these mines won't explode.\nYou just stepped on {MapManager.steppedCount} of them,\nand safely found {MapManager.minesCount - MapManager.steppedCount} mines.";
+                    contentText = $"Don't worry, these mines won't explode.\nYou just stepped on {CurrentGameData.SteppedCount} of them,\nand safely found {CurrentGameData.MinesCount - CurrentGameData.SteppedCount} mines.";
                 }
                 MessageBox.Show(contentText, "All mines are found!", MessageBoxButton.OK, MessageBoxImage.Information);
             }

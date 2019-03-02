@@ -37,7 +37,8 @@
                 Width="{Binding Path=MapWidth, Source={x:Static properties:Settings.Default}, Mode=OneWay}"
                 Height="{Binding Path=MapHeight, Source={x:Static properties:Settings.Default}, Mode=OneWay}"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Center" />
+                VerticalAlignment="Center"
+                Loaded="MapGrid_Loaded" />
         </Border>
     </ScrollViewer>
 </Window>

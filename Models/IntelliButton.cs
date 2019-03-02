@@ -2,7 +2,7 @@
 
 namespace GardeningWithMines.Models
 {
-    internal class IntelliButton : Button
+    public class IntelliButton : Button
     {
         public IntelliButton(int i, int j) : base()
         {

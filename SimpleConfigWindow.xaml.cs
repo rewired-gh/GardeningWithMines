@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using static GardeningWithMines.Managers.GameDataManager;
 using static GardeningWithMines.Properties.Settings;
 
 namespace GardeningWithMines
@@ -9,9 +10,9 @@ namespace GardeningWithMines
     /// </summary>
     public partial class SimpleConfigWindow : Window
     {
+        private readonly string title = "Simple Config Window";
         private int count;
         private int currentRow = -1, currentColumn = -1, currentCount = -1;
-        private string title = "Simple Config Window";
 
         public SimpleConfigWindow()
         {
@@ -29,8 +30,7 @@ namespace GardeningWithMines
             Default.Save();
             string info = $"[SavedToken: {GetCount}] ";
             Title = info + title;
-            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-            Application.Current.Shutdown();
+            GameRefresh();
         }
 
         private void ColumnTextBox_Loaded(object sender, RoutedEventArgs e)
