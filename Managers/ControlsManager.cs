@@ -1,4 +1,5 @@
 ﻿using GardeningWithMines.Models;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -42,6 +43,19 @@ namespace GardeningWithMines.Managers
 
         static ControlsManager()
         {
+            ColorsList = new List<ColorWithName>
+            {
+                new ColorWithName(Colors.LightBlue, "Light Blue (Default)"),
+                new ColorWithName(Colors.Cyan, "Cyan"),
+                new ColorWithName(Colors.LightGreen, "Light Green"),
+                new ColorWithName(Colors.Aquamarine, "Aquamarine"),
+                new ColorWithName(Colors.Lime, "Lime"),
+                new ColorWithName(Colors.LightPink, "Light Pink"),
+                new ColorWithName(Colors.WhiteSmoke, "White Smoke"),
+                new ColorWithName(Colors.White, "Pure White"),
+                new ColorWithName(Colors.Black, "Pure Black"),
+                new ColorWithName(Colors.Transparent, "Air")
+            };
             BlockFontSizeBinding.Source = Default;
             BlockFontSizeBinding.Path = new PropertyPath("BlockFontSize");
             IconFontSizeBinding.Source = Default;
@@ -49,6 +63,7 @@ namespace GardeningWithMines.Managers
         }
 
         public static IntelliButton[,] BlockButtons { get; set; }
+        public static List<ColorWithName> ColorsList { get; }
 
         private static void ShowNotificationOrNot()
         {

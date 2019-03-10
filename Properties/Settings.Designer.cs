@@ -241,7 +241,7 @@ namespace GardeningWithMines.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2,2,2,2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,1,1,1")]
         public global::System.Windows.Thickness ExtraMapBorderThickness {
             get {
                 return ((global::System.Windows.Thickness)(this["ExtraMapBorderThickness"]));
@@ -344,6 +344,18 @@ namespace GardeningWithMines.Properties {
             }
             set {
                 this["BlockForegroundBrush"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool NeedNotToShowTips {
+            get {
+                return ((bool)(this["NeedNotToShowTips"]));
+            }
+            set {
+                this["NeedNotToShowTips"] = value;
             }
         }
     }

@@ -4,81 +4,84 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:GardeningWithMines"
+    xmlns:managers="clr-namespace:GardeningWithMines.Managers"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:GardeningWithMines.Models"
     Title="Simple Config Window"
     Width="300"
-    Height="200"
+    Height="240"
     Background="{DynamicResource MaterialDesignPaper}"
     FontFamily="{DynamicResource MaterialDesignFont}"
     ResizeMode="NoResize"
     TextElement.FontSize="13"
     TextElement.FontWeight="Regular"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-    TextOptions.TextFormattingMode="Ideal"
-    TextOptions.TextRenderingMode="Auto"
     WindowStartupLocation="CenterScreen"
     WindowStyle="ThreeDBorderWindow"
     mc:Ignorable="d">
+    <Window.Resources>
+        <models:ColorToBrushConverter x:Key="colorCvtr" />
+    </Window.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="0.5*" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="1.2*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <TextBlock
             Grid.Row="0"
             Grid.Column="0"
-            Margin="0,0,10,0"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
+            Style="{StaticResource ConfigTextBlockStyle}"
             Text="Map Row:" />
         <TextBlock
             Grid.Row="1"
             Grid.Column="0"
-            Margin="0,0,10,0"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
+            Style="{StaticResource ConfigTextBlockStyle}"
             Text="Map Column:" />
         <TextBlock
             Grid.Row="2"
             Grid.Column="0"
-            Margin="0,0,10,0"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
+            Style="{StaticResource ConfigTextBlockStyle}"
             Text="Mines Count:" />
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="0"
+            Style="{StaticResource ConfigTextBlockStyle}"
+            Text="Border Thickness:" />
         <TextBox
             Name="RowTextBox"
             Grid.Row="0"
             Grid.Column="1"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Center"
             Loaded="RowTextBox_Loaded"
             TextChanged="RowTextBox_TextChanged" />
         <TextBox
             Name="ColumnTextBox"
             Grid.Row="1"
             Grid.Column="1"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Center"
             Loaded="ColumnTextBox_Loaded"
             TextChanged="ColumnTextBox_TextChanged" />
         <TextBox
             Name="CountTextBox"
             Grid.Row="2"
             Grid.Column="1"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Center"
             Loaded="CountTextBox_Loaded"
             TextChanged="CountTextBox_TextChanged" />
-        <GridSplitter
+        <TextBox
+            Name="BorderThicknessTextBox"
             Grid.Row="3"
+            Grid.Column="1"
+            Loaded="BorderThicknessTextBox_Loaded"
+            TextChanged="BorderThicknessTextBox_TextChanged" />
+        <GridSplitter
+            Grid.Row="4"
             Grid.ColumnSpan="2"
             Height="1"
             Margin="10,0,10,0"
@@ -96,7 +99,7 @@
             Foreground="Red"
             Text="Please restart the game manually to activate changes, thanks for understanding. "
             TextWrapping="WrapWithOverflow" />-->
-        <materialDesign:TransitioningContent Grid.Row="4" Grid.Column="1">
+        <materialDesign:TransitioningContent Grid.Row="5" Grid.Column="1">
             <materialDesign:TransitioningContent.OpeningEffects>
                 <materialDesign:TransitionEffect Kind="FadeIn" />
                 <materialDesign:TransitionEffect Kind="SlideInFromRight" />
@@ -104,15 +107,36 @@
             <Button
                 Name="ApplyButton"
                 Width="34"
-                Height="Auto"
+                Height="34"
                 Margin="0,0.4,-0.4,0.2"
                 HorizontalAlignment="Right"
                 Click="ApplyButton_Click"
                 Content="{materialDesign:PackIcon Tick}"
                 Cursor="Hand"
-                Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
                 IsEnabled="False"
-                Style="{DynamicResource MaterialDesignFloatingActionLightButton}" />
+                Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" />
         </materialDesign:TransitioningContent>
+        <ComboBox
+            Name="ColorSelecter"
+            Grid.Row="5"
+            Grid.ColumnSpan="2"
+            Width="150"
+            HorizontalAlignment="Left"
+            ItemsSource="{Binding Source={x:Static managers:ControlsManager.ColorsList}}"
+            Loaded="ComboBox_Loaded">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle
+                            Width="12"
+                            Height="12"
+                            Margin="0,0,5,0"
+                            VerticalAlignment="Center"
+                            Fill="{Binding Path=Color, Converter={StaticResource colorCvtr}}" />
+                        <TextBlock Text="{Binding Path=Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
     </Grid>
 </Window>

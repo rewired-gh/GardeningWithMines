@@ -57,7 +57,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="ExtraMapBorderThickness" Type="System.Windows.Thickness" Scope="User">
-      <Value Profile="(Default)">2,2,2,2</Value>
+      <Value Profile="(Default)">1,1,1,1</Value>
     </Setting>
     <Setting Name="MinesCount" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">30</Value>
@@ -82,6 +82,9 @@
     </Setting>
     <Setting Name="BlockForegroundBrush" Type="System.String" Scope="User">
       <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="NeedNotToShowTips" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

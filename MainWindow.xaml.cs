@@ -16,7 +16,6 @@ namespace GardeningWithMines
         public MainWindow()
         {
             InitializeComponent();
-            Default.Save();
         }
 
         public void Clear()
@@ -54,6 +53,11 @@ namespace GardeningWithMines
         private void MapGrid_Loaded(object sender, RoutedEventArgs e)
         {
             Init();
+            if (!Default.NeedNotToShowTips)
+            {
+                TipsWindow tipsWindow = new TipsWindow();
+                tipsWindow.ShowDialog();
+            }
         }
 
         private void RecalculateBlockFontSize()
@@ -83,8 +87,17 @@ namespace GardeningWithMines
         private void UpdateWindow()
         {
             double delta = WindowState == WindowState.Maximized ? Default.MaxViewMargin : 0;
-            double tempHeight = ActualHeight - Default.DeltaHeight - delta;
-            double tempWidth = tempHeight / CurrentGameData.MapRow * CurrentGameData.MapColumn;
+            double tempHeight, tempWidth;
+            if (ActualHeight < ActualWidth)
+            {
+                tempHeight = ActualHeight - delta - Default.DeltaHeight;
+                tempWidth = tempHeight / CurrentGameData.MapRow * CurrentGameData.MapColumn;
+            }
+            else
+            {
+                tempWidth = ActualWidth - delta - Default.DeltaWidth;
+                tempHeight = tempWidth / CurrentGameData.MapColumn * CurrentGameData.MapRow;
+            }
             if (Default.ForceCompleteView)
             {
                 if (Width < tempWidth)
@@ -93,14 +106,7 @@ namespace GardeningWithMines
                 }
             }
             Default.MapHeight = tempHeight;
-            if (Default.IsSquareBlock)
-            {
-                Default.MapWidth = tempWidth;
-            }
-            else
-            {
-                Default.MapWidth = ActualWidth - Default.DeltaWidth - delta;
-            }
+            Default.MapWidth = tempWidth;
             RecalculateBlockFontSize();
         }
 
@@ -115,6 +121,11 @@ namespace GardeningWithMines
                 case Key.A:
                     AboutBox1 aboutDialog = new AboutBox1();
                     aboutDialog.ShowDialog();
+                    break;
+
+                case Key.H:
+                    TipsWindow tipsWindow = new TipsWindow();
+                    tipsWindow.ShowDialog();
                     break;
 
                 case Key.F12:

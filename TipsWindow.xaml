@@ -1,0 +1,47 @@
+﻿<Window
+    x:Class="GardeningWithMines.TipsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:GardeningWithMines"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:properties="clr-namespace:GardeningWithMines.Properties"
+    Title="Tips"
+    Width="220"
+    Height="220"
+    Background="{DynamicResource MaterialDesignPaper}"
+    Closed="Window_Closed"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="ToolWindow"
+    mc:Ignorable="d">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Stretch">
+            <TextBlock
+                Margin="0,0,0,16"
+                FontSize="18"
+                FontWeight="Bold"
+                Text="Hotkeys:" />
+            <TextBlock
+                FontSize="14"
+                LineHeight="22"
+                Text="F5 - Start a new game&#x0a;F12 - Game settings&#x0a;A - About&#x0a;H - Show this window" />
+        </StackPanel>
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <CheckBox Margin="0,0,5,0" IsChecked="{Binding Path=NeedNotToShowTips, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
+            <TextBlock
+                VerticalAlignment="Center"
+                FontSize="12"
+                Text="Got it. Don't show this on start." />
+        </StackPanel>
+    </Grid>
+</Window>
