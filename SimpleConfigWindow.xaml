@@ -8,9 +8,10 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:GardeningWithMines.Models"
-    Title="Simple Config Window"
+    xmlns:properties="clr-namespace:GardeningWithMines.Properties"
+    Title="Settings"
     Width="300"
-    Height="240"
+    Height="340"
     Background="{DynamicResource MaterialDesignPaper}"
     FontFamily="{DynamicResource MaterialDesignFont}"
     ResizeMode="NoResize"
@@ -28,9 +29,11 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="1.4*" />
             <RowDefinition Height="0.5*" />
-            <RowDefinition Height="1.2*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" />
@@ -52,10 +55,26 @@
             Style="{StaticResource ConfigTextBlockStyle}"
             Text="Mines Count:" />
         <TextBlock
-            Grid.Row="3"
+            Grid.Row="5"
             Grid.Column="0"
             Style="{StaticResource ConfigTextBlockStyle}"
             Text="Border Thickness:" />
+        <TextBlock
+            Grid.Row="6"
+            Grid.Column="0"
+            Style="{StaticResource ConfigTextBlockStyle}"
+            Text="Font Color:" />
+        <TextBlock
+            Grid.Row="6"
+            Grid.Column="1"
+            Foreground="Gray"
+            Style="{StaticResource ConfigTextBlockStyle}"
+            Text="(Coming Soon)" />
+        <TextBlock
+            Grid.Row="7"
+            Grid.Column="0"
+            Style="{StaticResource ConfigTextBlockStyle}"
+            Text="Block Color:" />
         <TextBox
             Name="RowTextBox"
             Grid.Row="0"
@@ -76,10 +95,29 @@
             TextChanged="CountTextBox_TextChanged" />
         <TextBox
             Name="BorderThicknessTextBox"
-            Grid.Row="3"
-            Grid.Column="1"
+            Grid.Row="5"
+            Grid.Column="2"
             Loaded="BorderThicknessTextBox_Loaded"
             TextChanged="BorderThicknessTextBox_TextChanged" />
+        <materialDesign:TransitioningContent Grid.Row="3" Grid.Column="1">
+            <materialDesign:TransitioningContent.OpeningEffects>
+                <materialDesign:TransitionEffect Kind="FadeIn" />
+                <materialDesign:TransitionEffect Kind="SlideInFromRight" />
+            </materialDesign:TransitioningContent.OpeningEffects>
+            <Button
+                Name="ApplyButton"
+                Width="32"
+                Height="32"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Background="HotPink"
+                BorderBrush="HotPink"
+                Click="ApplyButton_Click"
+                Content="{materialDesign:PackIcon Tick}"
+                Cursor="Hand"
+                IsEnabled="False"
+                Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" />
+        </materialDesign:TransitioningContent>
         <GridSplitter
             Grid.Row="4"
             Grid.ColumnSpan="2"
@@ -88,42 +126,15 @@
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
             IsEnabled="False" />
-        <!--<TextBlock
-            Grid.Row="4"
-            Grid.ColumnSpan="2"
-            Width="200"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            FontSize="10"
-            FontStyle="Italic"
-            Foreground="Red"
-            Text="Please restart the game manually to activate changes, thanks for understanding. "
-            TextWrapping="WrapWithOverflow" />-->
-        <materialDesign:TransitioningContent Grid.Row="5" Grid.Column="1">
-            <materialDesign:TransitioningContent.OpeningEffects>
-                <materialDesign:TransitionEffect Kind="FadeIn" />
-                <materialDesign:TransitionEffect Kind="SlideInFromRight" />
-            </materialDesign:TransitioningContent.OpeningEffects>
-            <Button
-                Name="ApplyButton"
-                Width="34"
-                Height="34"
-                Margin="0,0.4,-0.4,0.2"
-                HorizontalAlignment="Right"
-                Click="ApplyButton_Click"
-                Content="{materialDesign:PackIcon Tick}"
-                Cursor="Hand"
-                IsEnabled="False"
-                Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" />
-        </materialDesign:TransitioningContent>
+
         <ComboBox
             Name="ColorSelecter"
-            Grid.Row="5"
-            Grid.ColumnSpan="2"
-            Width="150"
-            HorizontalAlignment="Left"
+            Grid.Row="7"
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
             ItemsSource="{Binding Source={x:Static managers:ControlsManager.ColorsList}}"
-            Loaded="ComboBox_Loaded">
+            Loaded="ComboBox_Loaded"
+            SelectionChanged="ColorSelecter_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

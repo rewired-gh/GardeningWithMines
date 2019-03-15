@@ -8,14 +8,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:properties="clr-namespace:GardeningWithMines.Properties"
     Title="Tips"
-    Width="220"
+    Width="240"
     Height="220"
     Background="{DynamicResource MaterialDesignPaper}"
     Closed="Window_Closed"
     FontFamily="{DynamicResource MaterialDesignFont}"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
-    WindowStyle="ToolWindow"
+    WindowStyle="ThreeDBorderWindow"
     mc:Ignorable="d">
     <Grid Margin="10">
         <Grid.RowDefinitions>

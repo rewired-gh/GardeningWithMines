@@ -88,7 +88,7 @@ namespace GardeningWithMines
         {
             double delta = WindowState == WindowState.Maximized ? Default.MaxViewMargin : 0;
             double tempHeight, tempWidth;
-            if (ActualHeight < ActualWidth)
+            if (ActualHeight / CurrentGameData.MapRow < ActualWidth / CurrentGameData.MapColumn)
             {
                 tempHeight = ActualHeight - delta - Default.DeltaHeight;
                 tempWidth = tempHeight / CurrentGameData.MapRow * CurrentGameData.MapColumn;

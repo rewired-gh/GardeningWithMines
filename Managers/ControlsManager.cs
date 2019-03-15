@@ -45,12 +45,14 @@ namespace GardeningWithMines.Managers
         {
             ColorsList = new List<ColorWithName>
             {
-                new ColorWithName(Colors.LightBlue, "Light Blue (Default)"),
-                new ColorWithName(Colors.Cyan, "Cyan"),
-                new ColorWithName(Colors.LightGreen, "Light Green"),
+                new ColorWithName(Colors.Cyan, "Cyan (Default)"),
+                new ColorWithName(Colors.LightBlue, "Light Blue"),
                 new ColorWithName(Colors.Aquamarine, "Aquamarine"),
-                new ColorWithName(Colors.Lime, "Lime"),
+                new ColorWithName(Colors.LightGreen, "Light Green"),
                 new ColorWithName(Colors.LightPink, "Light Pink"),
+                new ColorWithName(Colors.Lime, "Lime"),
+                new ColorWithName(Colors.Gold, "Gold"),
+                new ColorWithName(Colors.PeachPuff, "Peach Puff"),
                 new ColorWithName(Colors.WhiteSmoke, "White Smoke"),
                 new ColorWithName(Colors.White, "Pure White"),
                 new ColorWithName(Colors.Black, "Pure Black"),

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="BlockBorderThickness" Type="System.Windows.Thickness" Scope="User">
-      <Value Profile="(Default)">1,1,1,1</Value>
+      <Value Profile="(Default)">0.5,0.5,0.5,0.5</Value>
     </Setting>
     <Setting Name="MapRow" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">20</Value>
@@ -78,10 +78,10 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="BlockBackgroundBrush" Type="System.String" Scope="User">
-      <Value Profile="(Default)">LightBlue</Value>
+      <Value Profile="(Default)">Cyan</Value>
     </Setting>
     <Setting Name="BlockForegroundBrush" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Black</Value>
+      <Value Profile="(Default)">#d0404040</Value>
     </Setting>
     <Setting Name="NeedNotToShowTips" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

@@ -25,7 +25,7 @@ namespace GardeningWithMines.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1,1,1,1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5,0.5,0.5,0.5")]
         public global::System.Windows.Thickness BlockBorderThickness {
             get {
                 return ((global::System.Windows.Thickness)(this["BlockBorderThickness"]));
@@ -325,7 +325,7 @@ namespace GardeningWithMines.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("LightBlue")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Cyan")]
         public string BlockBackgroundBrush {
             get {
                 return ((string)(this["BlockBackgroundBrush"]));
@@ -337,7 +337,7 @@ namespace GardeningWithMines.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        [global::System.Configuration.DefaultSettingValueAttribute("#d0404040")]
         public string BlockForegroundBrush {
             get {
                 return ((string)(this["BlockForegroundBrush"]));
