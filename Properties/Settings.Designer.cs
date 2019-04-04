@@ -205,7 +205,7 @@ namespace GardeningWithMines.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("32")]
+        [global::System.Configuration.DefaultSettingValueAttribute("48")]
         public double DeltaWidth {
             get {
                 return ((double)(this["DeltaWidth"]));
@@ -337,7 +337,7 @@ namespace GardeningWithMines.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#d0404040")]
+        [global::System.Configuration.DefaultSettingValueAttribute("#D0404040")]
         public string BlockForegroundBrush {
             get {
                 return ((string)(this["BlockForegroundBrush"]));

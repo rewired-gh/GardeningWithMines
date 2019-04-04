@@ -37,7 +37,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -111,7 +111,6 @@
     </ApplicationDefinition>
     <Compile Include="Managers\GameDataManager.cs" />
     <Compile Include="Models\ColorWithName.cs" />
-    <Compile Include="Models\Converters.cs" />
     <Compile Include="Models\GameData.cs" />
     <Compile Include="Models\IntelliButton.cs" />
     <Compile Include="SimpleConfigWindow.xaml.cs">

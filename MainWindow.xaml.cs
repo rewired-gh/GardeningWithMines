@@ -76,8 +76,8 @@ namespace GardeningWithMines
                 Style = Application.Current.Resources["BlockButtonStyle"] as Style,
                 Padding = new Thickness(0)
             };
-            BlockButtons[i, j].PreviewMouseLeftButtonUp += PreviewMouseLeftButtonUpAction;
-            BlockButtons[i, j].PreviewMouseRightButtonUp += PreviewMouseRightButtonUpAction;
+            BlockButtons[i, j].PreviewMouseLeftButtonDown += PreviewMouseLeftButtonUpAction;
+            BlockButtons[i, j].PreviewMouseRightButtonDown += PreviewMouseRightButtonUpAction;
 
             MapGrid.Children.Add(BlockButtons[i, j]);
             Grid.SetRow(BlockButtons[i, j], i);

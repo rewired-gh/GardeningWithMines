@@ -48,7 +48,7 @@
       <Value Profile="(Default)">48</Value>
     </Setting>
     <Setting Name="DeltaWidth" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">32</Value>
+      <Value Profile="(Default)">48</Value>
     </Setting>
     <Setting Name="FontSizeRatio" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0.75</Value>
@@ -81,7 +81,7 @@
       <Value Profile="(Default)">Cyan</Value>
     </Setting>
     <Setting Name="BlockForegroundBrush" Type="System.String" Scope="User">
-      <Value Profile="(Default)">#d0404040</Value>
+      <Value Profile="(Default)">#D0404040</Value>
     </Setting>
     <Setting Name="NeedNotToShowTips" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

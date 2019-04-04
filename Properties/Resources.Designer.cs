@@ -59,5 +59,23 @@ namespace GardeningWithMines.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #D0404040.
+        /// </summary>
+        internal static string ClearBlack {
+            get {
+                return ResourceManager.GetString("ClearBlack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #D0FFFFFF.
+        /// </summary>
+        internal static string ClearWhite {
+            get {
+                return ResourceManager.GetString("ClearWhite", resourceCulture);
+            }
+        }
     }
 }

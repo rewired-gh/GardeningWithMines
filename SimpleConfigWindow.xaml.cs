@@ -9,6 +9,60 @@ using static GardeningWithMines.Properties.Settings;
 
 namespace GardeningWithMines
 {
+    public class ColorToBrushConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return new SolidColorBrush((Color)value);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class ColorToOptionConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value == null || parameter == null)
+                return false;
+
+            string colorType = parameter.ToString();
+            switch (colorType)
+            {
+                case "Black":
+                    return Default.BlockForegroundBrush == Properties.Resources.ClearBlack;
+
+                case "White":
+                    return Default.BlockForegroundBrush == Properties.Resources.ClearWhite;
+            }
+            return false;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value == null || parameter == null)
+                return null;
+
+            bool isChecked = (bool)value;
+            if (isChecked)
+            {
+                string colorType = parameter.ToString();
+                switch (colorType)
+                {
+                    case "Black":
+                        return Properties.Resources.ClearBlack;
+
+                    case "White":
+                        return Properties.Resources.ClearWhite;
+                }
+            }
+            return Default.BlockForegroundBrush;
+        }
+    }
+
     /// <summary>
     /// SimpleConfigWindow.xaml 的交互逻辑
     /// </summary>
@@ -81,6 +135,9 @@ namespace GardeningWithMines
 
         private void CountTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            //DEBUG
+            //RowTextBox.Text = DWB.IsChecked.ToString();
+            //DEBUG
             ApplyButton.IsEnabled = int.TryParse(CountTextBox.Text, out currentCount) && IsInRange();
         }
 

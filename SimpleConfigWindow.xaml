@@ -10,7 +10,7 @@
     xmlns:models="clr-namespace:GardeningWithMines.Models"
     xmlns:properties="clr-namespace:GardeningWithMines.Properties"
     Title="Settings"
-    Width="300"
+    Width="320"
     Height="340"
     Background="{DynamicResource MaterialDesignPaper}"
     FontFamily="{DynamicResource MaterialDesignFont}"
@@ -22,7 +22,8 @@
     WindowStyle="ThreeDBorderWindow"
     mc:Ignorable="d">
     <Window.Resources>
-        <models:ColorToBrushConverter x:Key="colorCvtr" />
+        <local:ColorToBrushConverter x:Key="brushCvt" />
+        <local:ColorToOptionConverter x:Key="optionCvt" />
     </Window.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -36,7 +37,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="2.75*" />
             <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <TextBlock
@@ -64,12 +65,23 @@
             Grid.Column="0"
             Style="{StaticResource ConfigTextBlockStyle}"
             Text="Font Color:" />
-        <TextBlock
+        <StackPanel
             Grid.Row="6"
             Grid.Column="1"
-            Foreground="Gray"
-            Style="{StaticResource ConfigTextBlockStyle}"
-            Text="(Coming Soon)" />
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <RadioButton
+                Margin="10,0"
+                Content="Black"
+                GroupName="ForegroundSelector"
+                IsChecked="{Binding Path=BlockForegroundBrush, Source={x:Static properties:Settings.Default}, Mode=TwoWay, Converter={StaticResource optionCvt}, ConverterParameter=Black}" />
+            <RadioButton
+                Margin="10,0"
+                Content="White"
+                GroupName="ForegroundSelector"
+                IsChecked="{Binding Path=BlockForegroundBrush, Source={x:Static properties:Settings.Default}, Mode=TwoWay, Converter={StaticResource optionCvt}, ConverterParameter=White}" />
+        </StackPanel>
         <TextBlock
             Grid.Row="7"
             Grid.Column="0"
@@ -99,6 +111,7 @@
             Grid.Column="2"
             Loaded="BorderThicknessTextBox_Loaded"
             TextChanged="BorderThicknessTextBox_TextChanged" />
+
         <materialDesign:TransitioningContent Grid.Row="3" Grid.Column="1">
             <materialDesign:TransitioningContent.OpeningEffects>
                 <materialDesign:TransitionEffect Kind="FadeIn" />
@@ -143,7 +156,7 @@
                             Height="12"
                             Margin="0,0,5,0"
                             VerticalAlignment="Center"
-                            Fill="{Binding Path=Color, Converter={StaticResource colorCvtr}}" />
+                            Fill="{Binding Path=Color, Converter={StaticResource brushCvt}}" />
                         <TextBlock Text="{Binding Path=Name}" />
                     </StackPanel>
                 </DataTemplate>
