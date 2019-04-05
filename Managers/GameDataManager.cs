@@ -7,10 +7,12 @@ namespace GardeningWithMines.Managers
 {
     internal static class GameDataManager
     {
+        //Define 2D around
         internal readonly static int[,] Around = { { -1, -1 }, { -1, 0 }, { -1,  1 },
                                                    {  0, -1 },            {  0,  1 },
                                                    {  1, -1 }, {  1, 0 }, {  1,  1 } };
 
+        //Create new data
         static GameDataManager()
         {
             DataRefresh();
@@ -21,12 +23,15 @@ namespace GardeningWithMines.Managers
         public static void GameRefresh()
         {
             DataRefresh();
+
+            //Refresh UI
             ((MainWindow)App.Current.MainWindow).Clear();
             ((MainWindow)App.Current.MainWindow).Init();
         }
 
         public static bool IsInRange(int row, int column)
         {
+            //Range: [0, row), [0, column)
             return row >= 0 && column >= 0 && row < Default.MapRow && column < Default.MapColumn;
         }
 
@@ -42,6 +47,7 @@ namespace GardeningWithMines.Managers
                 SteppedCount = 0,
                 MinesMap = new int[Default.MapRow, Default.MapColumn]
             };
+
             GenerateMinesMap();
         }
 
@@ -49,6 +55,8 @@ namespace GardeningWithMines.Managers
         {
             Random random = new Random();
             List<Position> positions = new List<Position>();
+
+            //Add all positions into list
             for (int i = 0; i < CurrentGameData.MapRow; i++)
             {
                 for (int j = 0; j < CurrentGameData.MapColumn; j++)
@@ -56,9 +64,11 @@ namespace GardeningWithMines.Managers
                     positions.Add(new Position(i, j));
                 }
             }
+
+            //Pick one out from list and set it as mine
             for (int i = 0; i < CurrentGameData.MinesCount; i++)
             {
-                int currentIndex = random.Next(positions.Count - 1);
+                int currentIndex = random.Next(positions.Count);
                 SetMine(positions[currentIndex].Row, positions[currentIndex].Column);
                 positions.RemoveAt(currentIndex);
             }
@@ -66,9 +76,11 @@ namespace GardeningWithMines.Managers
 
         private static void SetMine(int row, int column)
         {
+            //Set mine
             CurrentGameData.MinesMap[row, column] = -1;
-            int tempRow, tempColumn;
 
+            //Tell neighbours
+            int tempRow, tempColumn;
             for (int i = 0; i < 8; ++i)
             {
                 tempRow = row + Around[i, 0];

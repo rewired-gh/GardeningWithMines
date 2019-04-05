@@ -2,6 +2,7 @@
 
 namespace GardeningWithMines.Models
 {
+    //Oh my stupid button
     public class IntelliButton : Button
     {
         public IntelliButton(int i, int j) : base()

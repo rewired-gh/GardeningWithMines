@@ -14,6 +14,8 @@
     PreviewKeyUp="Window_PreviewKeyUp"
     SizeChanged="Window_SizeChanged"
     mc:Ignorable="d">
+    <Window.Resources />
+    <Window.Triggers />
     <ScrollViewer
         Padding="5"
         CanContentScroll="True"
@@ -30,7 +32,7 @@
             ScrollViewer.HorizontalScrollBarVisibility="Auto"
             ScrollViewer.VerticalScrollBarVisibility="Auto">
             <Border.BorderBrush>
-                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}" />
+                <SolidColorBrush Color="{StaticResource {x:Static SystemColors.ActiveBorderColorKey}}" />
             </Border.BorderBrush>
             <Grid
                 Name="MapGrid"

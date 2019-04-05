@@ -14,7 +14,7 @@
     <Setting Name="BlockFontSize" Type="System.Double" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
-    <Setting Name="BlockFontFamily" Type="System.String" Scope="User">
+    <Setting Name="TextFontFamily" Type="System.String" Scope="User">
       <Value Profile="(Default)">Arial</Value>
     </Setting>
     <Setting Name="BlockMaxFontSize" Type="System.Double" Scope="User">

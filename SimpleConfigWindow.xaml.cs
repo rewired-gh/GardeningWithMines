@@ -135,9 +135,6 @@ namespace GardeningWithMines
 
         private void CountTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //DEBUG
-            //RowTextBox.Text = DWB.IsChecked.ToString();
-            //DEBUG
             ApplyButton.IsEnabled = int.TryParse(CountTextBox.Text, out currentCount) && IsInRange();
         }
 

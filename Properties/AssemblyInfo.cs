@@ -7,11 +7,11 @@ using System.Windows;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("Gardening With Mines")]
-[assembly: AssemblyDescription("Highly customizable minimalist minesweeper game.")]
+[assembly: AssemblyDescription("A highly customizable minimalist minesweeper game.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Gardening With Mines")]
-[assembly: AssemblyCopyright("Copyright © h00kran 2019")]
+[assembly: AssemblyCopyright("Copyright © Hogan Lee 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -48,6 +48,6 @@ using System.Windows;
 // 可以指定所有值，也可以使用以下所示的 "*" 预置版本号和修订号
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.3.1.0")]
-[assembly: AssemblyFileVersion("1.3.1.0")]
+[assembly: AssemblyVersion("1.3.3.0")]
+[assembly: AssemblyFileVersion("1.3.3.0")]
 [assembly: NeutralResourcesLanguage("en-US")]

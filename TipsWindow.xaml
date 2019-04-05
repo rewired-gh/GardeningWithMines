@@ -8,12 +8,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:properties="clr-namespace:GardeningWithMines.Properties"
     Title="Tips"
-    Width="240"
-    Height="220"
+    Width="320"
+    Height="320"
+    MinWidth="320"
+    MinHeight="320"
     Background="{DynamicResource MaterialDesignPaper}"
     Closed="Window_Closed"
     FontFamily="{DynamicResource MaterialDesignFont}"
-    ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     WindowStyle="ThreeDBorderWindow"
     mc:Ignorable="d">
@@ -22,6 +23,10 @@
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
         <StackPanel VerticalAlignment="Stretch">
             <TextBlock
                 Margin="0,0,0,16"
@@ -33,8 +38,26 @@
                 LineHeight="22"
                 Text="F5 - Start a new game&#x0a;F12 - Game settings&#x0a;A - About&#x0a;H - Show this window" />
         </StackPanel>
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel VerticalAlignment="Stretch">
+                <TextBlock
+                    Margin="0,0,0,16"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Text="Tricks:" />
+                <TextBlock
+                    FontSize="14"
+                    LineHeight="22"
+                    ScrollViewer.CanContentScroll="True"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    Text="1. To hide the annoying borders, please set the 'Border Thickness' value to 0.&#x0a;&#x0a;2. White font color matches dark block colors better.&#x0a;&#x0a;3. Some block colors make 'magical effects' on your gaming experience.&#x0a;&#x0a;4. This game can be used to help you make a decision."
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </ScrollViewer>
         <StackPanel
             Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Margin="0,10,0,0"
             HorizontalAlignment="Right"
             Orientation="Horizontal">
             <CheckBox Margin="0,0,5,0" IsChecked="{Binding Path=NeedNotToShowTips, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />

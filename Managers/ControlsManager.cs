@@ -7,42 +7,57 @@ using System.Windows.Input;
 using System.Windows.Media;
 using static GardeningWithMines.Managers.GameDataManager;
 using static GardeningWithMines.Properties.Settings;
+using MaterialDesignThemes.Wpf;
 
 namespace GardeningWithMines.Managers
 {
     public static class ControlsManager
     {
+        //Grungy bindings
         public static Binding BlockFontSizeBinding = new Binding();
+
+        public static FontFamily IconFontFamily;
         public static Binding IconFontSizeBinding = new Binding();
 
         public static MouseButtonEventHandler PreviewMouseLeftButtonUpAction = (s, e) =>
         {
+            //Get row and column
             int i = (s as IntelliButton).Row;
             int j = (s as IntelliButton).Column;
+
+            //"Hey, it's your time, Map Manager."
             MapManager.Click(i, j);
+
+            //Judge whether gamer has finished the game
             ShowNotificationOrNot();
         };
 
         public static MouseButtonEventHandler PreviewMouseRightButtonUpAction = (s, e) =>
         {
+            //Get row and column
             int i = (s as IntelliButton).Row;
             int j = (s as IntelliButton).Column;
+
+            //Change block content
             if (BlockButtons[i, j].Content == null)
             {
-                BlockButtons[i, j].FontFamily = new FontFamily(Default.IconFontFamily);
+                BlockButtons[i, j].FontFamily = IconFontFamily;
                 BlockButtons[i, j].Content = Default.FlagCharacter;
                 BlockButtons[i, j].SetBinding(Button.FontSizeProperty, IconFontSizeBinding);
             }
             else
             {
-                BlockButtons[i, j].FontFamily = new FontFamily(Default.BlockFontFamily);
+                BlockButtons[i, j].FontFamily = TextFontFamily;
                 BlockButtons[i, j].Content = null;
                 BlockButtons[i, j].SetBinding(Button.FontSizeProperty, BlockFontSizeBinding);
             }
         };
 
+        public static FontFamily TextFontFamily;
+
         static ControlsManager()
         {
+            //Create color list ( in a shitty way )
             ColorsList = new List<ColorWithName>
             {
                 new ColorWithName(Colors.Cyan, "Cyan (Default)"),
@@ -73,10 +88,16 @@ namespace GardeningWithMines.Managers
                 new ColorWithName(Colors.Black, "Pure Black"),
                 new ColorWithName(Colors.Transparent, "Air")
             };
+
+            //Set bindings
             BlockFontSizeBinding.Source = Default;
             BlockFontSizeBinding.Path = new PropertyPath("BlockFontSize");
             IconFontSizeBinding.Source = Default;
             IconFontSizeBinding.Path = new PropertyPath("IconFontSize");
+
+            //Prepare font families
+            TextFontFamily = new FontFamily(Default.TextFontFamily);
+            IconFontFamily = new FontFamily(Default.IconFontFamily);
         }
 
         public static IntelliButton[,] BlockButtons { get; set; }
@@ -84,6 +105,7 @@ namespace GardeningWithMines.Managers
 
         private static void ShowNotificationOrNot()
         {
+            //TODO: Improve UI
             if ((!CurrentGameData.HaveShownNotification) && CurrentGameData.UnclickedSafeBlockCount == 0)
             {
                 CurrentGameData.HaveShownNotification = true;

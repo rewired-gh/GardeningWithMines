@@ -20,17 +20,22 @@ namespace GardeningWithMines
 
         public void Clear()
         {
+            //Remove blocks
             MapGrid.Children.Clear();
+
+            //Remove grid
             MapGrid.RowDefinitions.Clear();
             MapGrid.ColumnDefinitions.Clear();
         }
 
         public void Init()
         {
+            //Prepare for generating blocks
             BlockButtons = new IntelliButton[CurrentGameData.MapRow, CurrentGameData.MapColumn];
             MapGrid.MinHeight = Default.MinBlockHeight * CurrentGameData.MapRow;
             MapGrid.MinWidth = Default.MinBlockWidth * CurrentGameData.MapColumn;
 
+            //Build grid
             for (int i = 0; i < CurrentGameData.MapRow; i++)
             {
                 MapGrid.RowDefinitions.Add(new RowDefinition());
@@ -40,6 +45,7 @@ namespace GardeningWithMines
                 MapGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
+            //Add blocks
             for (int i = 0; i < CurrentGameData.MapRow; i++)
             {
                 for (int j = 0; j < CurrentGameData.MapColumn; j++)
@@ -47,12 +53,17 @@ namespace GardeningWithMines
                     SetBlock(i, j);
                 }
             }
+
+            //Triger 'update event'
             UpdateWindow();
         }
 
         private void MapGrid_Loaded(object sender, RoutedEventArgs e)
         {
+            //Hot loading
             Init();
+
+            //Show 'tips window'
             if (!Default.NeedNotToShowTips)
             {
                 TipsWindow tipsWindow = new TipsWindow();
@@ -62,23 +73,28 @@ namespace GardeningWithMines
 
         private void RecalculateBlockFontSize()
         {
+            //Algorithm for recalculating
             double blockFontSize = (Default.MapHeight < MapGrid.MinHeight ?
-                MapGrid.MinHeight : Default.MapHeight) / CurrentGameData.MapRow * Default.FontSizeRatio;
+                MapGrid.MinHeight : Default.MapHeight) //Get current map height
+                / CurrentGameData.MapRow * Default.FontSizeRatio; //Calculate font size depending on block height
+
             Default.BlockFontSize = blockFontSize < Default.BlockMaxFontSize ?
-                blockFontSize : Default.BlockMaxFontSize;
-            Default.IconFontSize = Default.BlockFontSize * Default.IconSizeRatio;
+                blockFontSize : Default.BlockMaxFontSize; //Set 'font' size
+
+            Default.IconFontSize = Default.BlockFontSize * Default.IconSizeRatio; //Set 'icon' size
         }
 
         private void SetBlock(int i, int j)
         {
+            //Create new block
             BlockButtons[i, j] = new IntelliButton(i, j)
             {
-                Style = Application.Current.Resources["BlockButtonStyle"] as Style,
-                Padding = new Thickness(0)
+                Style = Application.Current.Resources["BlockButtonStyle"] as Style //Get and use the style
             };
             BlockButtons[i, j].PreviewMouseLeftButtonDown += PreviewMouseLeftButtonUpAction;
             BlockButtons[i, j].PreviewMouseRightButtonDown += PreviewMouseRightButtonUpAction;
 
+            //Add block
             MapGrid.Children.Add(BlockButtons[i, j]);
             Grid.SetRow(BlockButtons[i, j], i);
             Grid.SetColumn(BlockButtons[i, j], j);
@@ -86,7 +102,10 @@ namespace GardeningWithMines
 
         private void UpdateWindow()
         {
+            //Add margin when window is maximized
             double delta = WindowState == WindowState.Maximized ? Default.MaxViewMargin : 0;
+
+            //Alogrithm for recalculating map size
             double tempHeight, tempWidth;
             if (ActualHeight / CurrentGameData.MapRow < ActualWidth / CurrentGameData.MapColumn)
             {
@@ -105,13 +124,17 @@ namespace GardeningWithMines
                     Width = tempWidth + Default.DeltaWidth;
                 }
             }
+
+            //Set map size
             Default.MapHeight = tempHeight;
             Default.MapWidth = tempWidth;
+
             RecalculateBlockFontSize();
         }
 
         private void Window_PreviewKeyUp(object sender, KeyEventArgs e)
         {
+            //Awful code
             switch (e.Key)
             {
                 case Key.F5:
