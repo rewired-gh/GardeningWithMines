@@ -89,7 +89,8 @@ namespace GardeningWithMines
             //Create new block
             BlockButtons[i, j] = new IntelliButton(i, j)
             {
-                Style = Application.Current.Resources["BlockButtonStyle"] as Style //Get and use the style
+                Style = Application.Current.Resources["BlockButtonStyle"] as Style, //Get and use the style
+                FontFamily = Managers.ControlsManager.TextFontFamily
             };
             BlockButtons[i, j].PreviewMouseLeftButtonDown += PreviewMouseLeftButtonUpAction;
             BlockButtons[i, j].PreviewMouseRightButtonDown += PreviewMouseRightButtonUpAction;
