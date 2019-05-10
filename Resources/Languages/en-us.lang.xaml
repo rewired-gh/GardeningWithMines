@@ -1,0 +1,24 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:GardeningWithMines.Resources.Languages"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="Tips">Tips</sys:String>
+    <sys:String x:Key="Hotkeys">Hotkeys</sys:String>
+    <sys:String x:Key="Hotkeys-content" xml:space="preserve">F5 - Start a new game&#x0a;F12 - Game settings&#x0a;A - About&#x0a;H - Show this window</sys:String>
+    <sys:String x:Key="Tricks">Tricks</sys:String>
+    <sys:String x:Key="Tricks-content" xml:space="preserve">1. To hide the annoying borders, please set the 'Border Thickness' value to 0.&#x0a;&#x0a;2. White font color matches dark theme colors better.&#x0a;&#x0a;3. Some theme colors make 'magical effects' on your gaming experience.&#x0a;&#x0a;4. This game can be used to help you make a decision.</sys:String>
+    <sys:String x:Key="DontShow">Got it. Don't show this on start.</sys:String>
+    <sys:String x:Key="Settings">Settings</sys:String>
+    <sys:String x:Key="MapRow">Map Row:</sys:String>
+    <sys:String x:Key="MapColumn">Map Column:</sys:String>
+    <sys:String x:Key="MineCount">Landmines Count:</sys:String>
+    <sys:String x:Key="BorderThickness">Border Thickness:</sys:String>
+    <sys:String x:Key="FontColor">Font Color:</sys:String>
+    <sys:String x:Key="Black">Black</sys:String>
+    <sys:String x:Key="White">White</sys:String>
+    <sys:String x:Key="BlockColor">Theme Color:</sys:String>
+    <sys:String x:Key="PerfectNotificationMessage" xml:space="preserve">Congratulations!&#x0a;You have found all %d0 landmines without stepping on any of them.</sys:String>
+    <sys:String x:Key="ImperfectNotificationMessage" xml:space="preserve">Don't worry, these landmines won't explode.&#x0a;You just stepped on %d0 of them,&#x0a;and safely found %d1 landmines.</sys:String>
+    <sys:String x:Key="NotificationTitle">All landmines are found!</sys:String>
+</ResourceDictionary>

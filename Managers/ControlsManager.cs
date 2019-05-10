@@ -8,11 +8,14 @@ using System.Windows.Media;
 using static GardeningWithMines.Managers.GameDataManager;
 using static GardeningWithMines.Properties.Settings;
 using MaterialDesignThemes.Wpf;
+using System.Threading;
 
 namespace GardeningWithMines.Managers
 {
     public static class ControlsManager
     {
+        public static readonly HashSet<string> SupportedLanguagesTable;
+
         //Grungy bindings
         public static Binding BlockFontSizeBinding = new Binding();
 
@@ -57,6 +60,9 @@ namespace GardeningWithMines.Managers
 
         static ControlsManager()
         {
+            SupportedLanguagesTable = new HashSet<string> { "en-us", "zh-cn" };
+            ChangeLanguage();
+
             //Create color list ( in a shitty way )
             ColorsList = new List<ColorWithName>
             {
@@ -101,7 +107,17 @@ namespace GardeningWithMines.Managers
         }
 
         public static IntelliButton[,] BlockButtons { get; set; }
+
         public static List<ColorWithName> ColorsList { get; }
+
+        private static void ChangeLanguage()
+        {
+            string culture = Thread.CurrentThread.CurrentCulture.Name.ToLower();
+            if (SupportedLanguagesTable.Contains(culture))
+            {
+                App.Current.Resources.MergedDictionaries[0] = new ResourceDictionary() { Source = new System.Uri($@"pack://application:,,,/Resources/Languages/{culture}.lang.xaml") };
+            }
+        }
 
         private static void ShowNotificationOrNot()
         {
@@ -112,13 +128,13 @@ namespace GardeningWithMines.Managers
                 string contentText;
                 if (CurrentGameData.SteppedCount == 0)
                 {
-                    contentText = $"Congratulations!\nYou have found all {CurrentGameData.MinesCount} mines without stepping on any of them.";
+                    contentText = (App.Current.Resources["PerfectNotificationMessage"] as string).Replace("%d0", CurrentGameData.MinesCount.ToString());
                 }
                 else
                 {
-                    contentText = $"Don't worry, these mines won't explode.\nYou just stepped on {CurrentGameData.SteppedCount} of them,\nand safely found {CurrentGameData.MinesCount - CurrentGameData.SteppedCount} mines.";
+                    contentText = (App.Current.Resources["ImperfectNotificationMessage"] as string).Replace("%d0", CurrentGameData.SteppedCount.ToString()).Replace("%d1", (CurrentGameData.MinesCount - CurrentGameData.SteppedCount).ToString());
                 }
-                MessageBox.Show(contentText, "All mines are found!", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(contentText, App.Current.Resources["NotificationTitle"] as string, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
     }

@@ -7,7 +7,7 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:properties="clr-namespace:GardeningWithMines.Properties"
-    Title="Tips"
+    Title="{StaticResource Tips}"
     Width="350"
     Height="320"
     MinWidth="350"
@@ -34,11 +34,12 @@
                 Margin="0,0,0,16"
                 FontSize="18"
                 FontWeight="Bold"
-                Text="Hotkeys:" />
+                Text="{StaticResource Hotkeys}" />
             <TextBlock
                 FontSize="14"
                 LineHeight="22"
-                Text="F5 - Start a new game&#x0a;F12 - Game settings&#x0a;A - About&#x0a;H - Show this window" />
+                Text="{StaticResource Hotkeys-content}"
+                TextWrapping="Wrap" />
         </StackPanel>
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
             <StackPanel VerticalAlignment="Stretch">
@@ -46,13 +47,13 @@
                     Margin="0,0,0,16"
                     FontSize="18"
                     FontWeight="Bold"
-                    Text="Tricks:" />
+                    Text="{StaticResource Tricks}" />
                 <TextBlock
                     FontSize="14"
                     LineHeight="22"
                     ScrollViewer.CanContentScroll="True"
                     ScrollViewer.VerticalScrollBarVisibility="Auto"
-                    Text="1. To hide the annoying borders, please set the 'Border Thickness' value to 0.&#x0a;&#x0a;2. White font color matches dark block colors better.&#x0a;&#x0a;3. Some block colors make 'magical effects' on your gaming experience.&#x0a;&#x0a;4. This game can be used to help you make a decision."
+                    Text="{StaticResource Tricks-content}"
                     TextWrapping="Wrap" />
             </StackPanel>
         </ScrollViewer>
@@ -66,7 +67,7 @@
             <TextBlock
                 VerticalAlignment="Center"
                 FontSize="12"
-                Text="Got it. Don't show this on start." />
+                Text="{StaticResource DontShow}" />
         </StackPanel>
     </Grid>
 </Window>
